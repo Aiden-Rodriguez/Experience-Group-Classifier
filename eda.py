@@ -425,11 +425,11 @@ def run(in_path: Path, side_path: Path | None, out_path: Path):
 
 def main(argv=None):
     ap = argparse.ArgumentParser()
-    ap.add_argument("--in", dest="in_path", default="../data/pokemon.parquet",
+    ap.add_argument("--in", dest="in_path", default="./data/pokemon.parquet",
                     help="Input parquet path (default: %(default)s)")
-    ap.add_argument("--side", dest="side_path", default="../data/pokemon_2.parquet",
+    ap.add_argument("--side", dest="side_path", default="./data/pokemon_2.parquet",
                     help="Right-side parquet to join by name (default: %(default)s)")
-    ap.add_argument("--out", dest="out_path", default="../data/completed_pokemon_set.parquet",
+    ap.add_argument("--out", dest="out_path", default="./data/completed_pokemon_set.parquet",
                     help="Output Parquet path (default: %(default)s)")
     args = ap.parse_args(argv)
     in_path = Path(args.in_path)
