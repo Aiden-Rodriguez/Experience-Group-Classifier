@@ -16,6 +16,7 @@ I will start by going over the first dataset. The first dataset goes through a l
 
 
 The below graphic represents, per of the 7 generations in my dataset, the distribution of the experience groups in each generation. 
+
 ![alt text](<tableau pngs/generation vs experience type.png>)
 
 This graphic alone gives an incredible amount of information. The most important thing to note is that the distribution is nowhere near close to being equal. Most Pokemon are within the groups Slow, Medium Slow, or Medium Fast, with the Fast group being much less common, but still consistently appearing throughout each generation. Notably however, there are two experience groups only appearing in Generation 4 and Generation 3: Those being the groups Erratic and Fluctuating. Additionally, they are both really small in number even within those generations. 
@@ -41,6 +42,7 @@ Looking at the Fast group on this, it can be seen that the color "Pink" is the p
 Moving on to the next experience group, the Slow group, with 172 total Pokemon, there is already much more Pokemon, and thus data to work with. Funnily enough, this experience group is probably the easiest one to classify, as the slow experience group is tied to having very strong Pokemon. Logically, this makes sense - the Pokemon that are the strongest should be the slowest to train and grow (Excluding the Fluctuating group, as that group is just weird). These Pokemon have pretty clear signals; They by far have the highest average weight, the lowest catch rates, give the most experience points when defeated, contain almost all of the "legendary Pokemon", and have by incredibly far have the most amount of egg steps. (Egg steps is the amount of steps needed to take to hatch a Pokemon egg, per Pokemon species.)
 
 Below this egg steps comparison can be seen. Most other groups on average take about 6,000 steps, while this group on average takes 15,000 steps. The signals for this group are pretty clear, and I wouldn't doubt getting about 80-90% accuracy on the predictions on this group specifically.
+
 ![alt text](<tableau pngs/egg_steps_grouping.png>)
 
 **Medium Slow**
@@ -54,6 +56,7 @@ This is by far the strongest signal overall to determine the groupings of Medium
 **Medium Fast**
 
 The last grouping is the Medium Fast grouping which was previously mentioned, with 335 total Pokemon. Again, there is a good amount of signal visble from the previous graphic, as it can be seen that the vast majority of Pokemon from the Medium Fast group have 1 evolution stage, meaning in their weakest form, they can only evolve once. They can typically get to the peak of their power faster than Pokemon in the Medium Slow group as they have to evolve 1 less time, but to compensate typically don't get as strong as Pokemon that need to evolve twice to get to the peak of their power. This can loosely be seen in the below graphic. The vertical axis represents the base stat total (That is the sum of all of their base stats such as Attack, Defence, etc.). This assumes all Pokemon are in their final evolution stage. You can see a trend in the base stat totals between the Fast, Medium Fast, Medium Slow, and Slow groupings, being that the more experience required to reach level 100, the higher the Pokemon's stats will be.
+
 ![alt text](<tableau pngs/evo_pkmn_bst.png>)
 
 Overall, from this EDA the most important things I learned is that these experience groupings operate on somewhat of a spectrum, from Fast->Medium Fast->Medium Slow -> Slow. This spectrum can be roughly estimated through the final-stage evolution's base stat total, and how many evolutions it took to get there. The most importnant signals I found were definitely the evolution stage count, the number in generation the Pokemon is relative to the start of the generation, the base stat total, and surprisingly, at least for the Fast group color, as Pink is a surprisingly decent signal for that group. I anticipate facing somes challenges due to data sparcity overall however, as I don't even have 1000 entries. On top of that 2 of the 6 groups (Fluctuating and Erratic) are so small that it's really just not possible to predict them without having them memorized or having their specific rules memorized. But the other 4 groups, which are over 95% of the data do have solid signals to work off of. 
