@@ -15,13 +15,13 @@ Moving on to the model itself, one other thing I noticed about the data is that 
 Another thing to note, is that because the dataset is so small, it allows me to run iterations of the classifier quite quickly. Each run takes about 15 seconds overall, so its easy to make changes and iterate. Because of this, I chose to run 7 total different test-train splits --- one for each generation. Essentially, test on 1 generation, and train on the other 6. This allows me to see as well where the classifier fails, and what traits it may be lacking in. 
 
 Below is the final PR curves for each group over every generation.
-The baseline line is a basic random picker, which chooses a random experience group every time.`
+The baseline line is a basic random picker, which chooses a random experience group every time.
 
 ![alt text](eval_with_all_groups_png/precision_recall_overall.png)
 
 (If you would like to view the curves per-generation, or ROC curves, they are under the folder eval_with_all_groups_png)
 
-The micro-average curve in pink is essentially the overall over all experience groups. The Erratic and Fluctuating are near 0 for obvious reasons - the classifier never chose them and as a result the PR is near 0. It makes sense for these to be under a random baseline as obviously the classifier never guessed these. Fast has a PR of 0.485, which makes sense. Given that this group has only a bit over 50 Pokemon overall, it's easy to see that there's not really much data to work off of. Still, there are valid patterns that can identify Pokemon in this group, but with the amount of data, its harder to pick up on these patterns. Medium Fast has a PR of 0.742, which is quite good actually, followed by Slow with 0.803 and Medium Slow with 0.848. It's quite easy to see that there is a trend with the amount of Pokemon there is in the experience group and the PR of that group. The overall PR sits at 0.760, which I would say is quite good overall.
+The micro-average curve in pink is essentially the overall PR over all experience groups. The Erratic and Fluctuating are near 0 for obvious reasons - the classifier never chose them and as a result the PR is near 0. It makes sense for these to be under a random baseline as obviously the classifier never guessed these. Fast has a PR of 0.485, which makes sense. Given that this group has only a bit over 50 Pokemon overall, it's easy to see that there's not really much data to work off of. Still, there are valid patterns that can identify Pokemon in this group, but with the amount of data, its harder to pick up on these patterns. Medium Fast has a PR of 0.742, which is quite good actually, followed by Slow with 0.803 and Medium Slow with 0.848. It's quite easy to see that there is a trend with the amount of Pokemon there is in the experience group and the PR of that group. The overall PR sits at 0.760, which I would say is quite good overall.
 
 In terms of data (# of Pokemon) from highest to lowest the ordering is:
 
@@ -31,19 +31,27 @@ While the list in terms of PR is:
 
 Medium Slow (0.848), Slow (0.803), Medium Fast (0.742), Fast (0.485), Erratic (0.080), Fluctuating (0.017)
 
+Although these do not exactly line up, the association can be clearly seen.
+
 Below is the overall accuracy breakdown of the experience groups. Acc represents the accuracy of each group (that is the % of the amount correct).
 
-=== Overall (All Generations) ===
-Total size: 801
-Model: correct=570, incorrect=231, accuracy=0.712
-Per true experience type (overall):
-    Erratic         support=  22  correct=   0  incorrect=  22  acc= 0.000
-    Fast            support=  56  correct=  17  incorrect=  39  acc= 0.304
-    Fluctuating     support=  14  correct=   0  incorrect=  14  acc= 0.000
-    Medium Fast     support= 335  correct= 288  incorrect=  47  acc= 0.860
-    Medium Slow     support= 202  correct= 155  incorrect=  47  acc= 0.767
-    Slow            support= 172  correct= 110  incorrect=  62  acc= 0.640
-  Predicted counts (overall): Erratic=0, Fast=29, Fluctuating=0, Medium Fast=431, Medium Slow=190, Slow=151
+## Overall (All Generations)
+
+| Experience Group | Support | Correct | Incorrect | Accuracy | Predicted Count |
+|------------------|----------|----------|------------|-----------|-----------------|
+| Erratic          | 22       | 0        | 22         | 0.000     | 0               |
+| Fast             | 56       | 17       | 39         | 0.304     | 29              |
+| Fluctuating      | 14       | 0        | 14         | 0.000     | 0               |
+| Medium Fast      | 335      | 288      | 47         | 0.860     | 431             |
+| Medium Slow      | 202      | 155      | 47         | 0.767     | 190             |
+| Slow             | 172      | 110      | 62         | 0.640     | 151             |
+
+**Totals**
+
+- **Total Pokémon:** 801  
+- **Overall Correct:** 570  
+- **Overall Incorrect:** 231  
+- **Overall Accuracy:** 0.712
 
 Again, In terms of data (# of Pokemon) from highest to lowest the ordering is:
 
