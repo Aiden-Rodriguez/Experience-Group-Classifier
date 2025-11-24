@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 import warnings
 from pathlib import Path
 from collections import deque
@@ -26,7 +25,6 @@ from sklearn.metrics import (
 
 warnings.filterwarnings("ignore", category=FutureWarning)
 
-# ==== Static paths ====
 INPUT_PATH = Path("./data/completed_pokemon_set.parquet")
 OUTPUT_DIR = Path("./eval_with_all_groups_png")
 
@@ -34,12 +32,17 @@ OUTPUT_DIR = Path("./eval_with_all_groups_png")
 FEATURES = [
     "base_total",
     "evolution_stages",
-    "color",
     "capture_rate",
     "percentage_male",
     "base_experience",
     "base_egg_steps",
     "no_in_generation",
+    "color",
+    "is_legendary",
+    "height_m",
+    "weight_kg",
+    "attack",
+    "speed",
 ]
 EXTRA_COLS_FOR_EVOS = ["name", "evolves_to", "evolves_from"]
 TARGET = "experience_growth"
@@ -103,12 +106,14 @@ def clean_and_filter(df: pd.DataFrame) -> pd.DataFrame:
         "base_experience",
         "base_egg_steps",
         "no_in_generation",
+        "height_m",
+        "weight_kg",
+        "attack",
+        "speed",
         GEN_COL,
     ]
     for c in numeric_cols:
         dd[c] = pd.to_numeric(dd[c], errors="coerce")
-
-    dd["color"] = dd["color"].astype("string").fillna("unknown")
 
     dd = dd.dropna(subset=[GEN_COL, TARGET])
     dd[GEN_COL] = dd[GEN_COL].astype(int)
@@ -185,7 +190,7 @@ def plot_and_save_confusion_matrix(y_true, y_pred, labels, title, out_path: Path
 def plot_and_save_precision_recall(y_true, y_proba, classes, title, out_path: Path,
                                    baseline_proba=None):
     """
-    Per-class PR + micro-average; optional baseline overlay (micro).
+    Per-class PR + micro-average
     """
     Y_bin = label_binarize(y_true, classes=classes)
     if Y_bin.ndim == 1:
@@ -226,7 +231,7 @@ def plot_and_save_precision_recall(y_true, y_proba, classes, title, out_path: Pa
 def plot_and_save_roc(y_true, y_proba, classes, title, out_path: Path,
                       baseline_proba=None):
     """
-    Per-class ROC + micro-average; optional baseline overlay (micro).
+    Per-class ROC + micro-average
     """
     Y_bin = label_binarize(y_true, classes=classes)
     if Y_bin.ndim == 1:
@@ -277,10 +282,10 @@ def main():
     df = load_data()
     df = clean_and_filter(df)
 
-    categorical_cols = ["color"]
+    categorical_cols = ["color", "is_legendary"]
     numeric_cols = [c for c in FEATURES if c not in categorical_cols]
 
-    all_classes = sorted(df[TARGET].dropna().unique().tolist())  # includes Erratic/Fluctuating
+    all_classes = sorted(df[TARGET].dropna().unique().tolist())
     name_to_finals = build_final_evolution_map(df)
 
     gens = sorted(df[GEN_COL].unique().tolist())
@@ -289,7 +294,6 @@ def main():
 
     all_cls_index = {c: i for i, c in enumerate(all_classes)}
 
-    # --- Accumulators for overall (all-gens) summary & curves ---
     overall_true = []
     overall_pred = []
     overall_model_proba = []
@@ -350,11 +354,10 @@ def main():
         y_pred = np.array([all_classes[i] for i in averaged_probas.argmax(axis=1)])
         y_test = test_df_full[TARGET].astype(str).values
 
-        # Accumulate across gens for overall summary & overall curves
         overall_true.append(y_test)
         overall_pred.append(y_pred)
 
-        # -------- Baseline: random pick among ALLOWED_PREDICT_CLASSES --------
+        # Baseline: random pick
         rng = np.random.default_rng(RANDOM_STATE + int(g))
         baseline_labels = rng.choice(ALLOWED_PREDICT_CLASSES, size=len(test_df_full))
         baseline_proba = np.zeros_like(averaged_probas)
@@ -364,7 +367,7 @@ def main():
         overall_model_proba.append(averaged_probas)
         overall_baseline_proba.append(baseline_proba)
 
-        # ----- Per-generation results.txt section -----
+        # Per-generation results
         correct = int((y_pred == y_test).sum())
         total = len(y_test)
         incorrect = total - correct
@@ -399,7 +402,7 @@ def main():
         print(f"\n=== Generation {g}: test size={total} ===")
         print(classification_report(y_test, y_pred, labels=all_classes, zero_division=0))
 
-        # ----- Per-generation figures -----
+        # Per-generation figures
         cm_path = OUTPUT_DIR / f"confusion_matrix_gen{g}.png"
         plot_and_save_confusion_matrix(
             y_true=y_test, y_pred=y_pred, labels=all_classes,
@@ -420,7 +423,7 @@ def main():
             out_path=roc_path, baseline_proba=baseline_proba
         )
 
-    # ---------- Overall (All Generations) ----------
+    # All generations
     y_true_all = np.concatenate(overall_true, axis=0) if overall_true else np.array([])
     y_pred_all = np.concatenate(overall_pred, axis=0) if overall_pred else np.array([])
 
@@ -451,7 +454,7 @@ def main():
         f.write("\n".join(per_class_overall_lines) + "\n")
         f.write(pred_line_all + "\n")
 
-    # Overall PR/ROC across all generations
+    # Overall PR/ROC
     if overall_model_proba:
         proba_all = np.concatenate(overall_model_proba, axis=0)
         baseline_all = np.concatenate(overall_baseline_proba, axis=0)
@@ -461,7 +464,7 @@ def main():
             y_true=y_true_all,
             y_proba=proba_all,
             classes=all_classes,
-            title="Precision–Recall — Overall (All Generations)",
+            title="Precision-Recall — Overall (All Generations)",
             out_path=pr_overall_path,
             baseline_proba=baseline_all
         )

@@ -3,81 +3,81 @@ Model evaluation results
 
 === Generation 1 ===
 Test size: 151
-Model:    correct=120, incorrect=31, accuracy=0.795
+Model:    correct=122, incorrect=29, accuracy=0.808
 Baseline: correct=30, incorrect=121, accuracy=0.199
 Per true experience type (model):
     Erratic         support=  0  correct=  0  incorrect=  0  acc= 0.000
-    Fast            support=  5  correct=  5  incorrect=  0  acc= 1.000
+    Fast            support=  5  correct=  3  incorrect=  2  acc= 0.600
     Fluctuating     support=  0  correct=  0  incorrect=  0  acc= 0.000
-    Medium Fast     support= 80  correct= 67  incorrect= 13  acc= 0.838
+    Medium Fast     support= 80  correct= 69  incorrect= 11  acc= 0.863
     Medium Slow     support= 40  correct= 39  incorrect=  1  acc= 0.975
-    Slow            support= 26  correct=  9  incorrect= 17  acc= 0.346
-  Predicted counts: Erratic=0, Fast=10, Fluctuating=0, Medium Fast=82, Medium Slow=48, Slow=11
+    Slow            support= 26  correct= 11  incorrect= 15  acc= 0.423
+  Predicted counts: Erratic=0, Fast=4, Fluctuating=0, Medium Fast=83, Medium Slow=51, Slow=13
 
 === Generation 2 ===
 Test size: 100
-Model:    correct=69, incorrect=31, accuracy=0.690
+Model:    correct=66, incorrect=34, accuracy=0.660
 Baseline: correct=15, incorrect=85, accuracy=0.150
 Per true experience type (model):
     Erratic         support=  0  correct=  0  incorrect=  0  acc= 0.000
-    Fast            support= 18  correct=  6  incorrect= 12  acc= 0.333
+    Fast            support= 18  correct=  4  incorrect= 14  acc= 0.222
     Fluctuating     support=  0  correct=  0  incorrect=  0  acc= 0.000
-    Medium Fast     support= 39  correct= 36  incorrect=  3  acc= 0.923
-    Medium Slow     support= 24  correct= 19  incorrect=  5  acc= 0.792
-    Slow            support= 19  correct=  8  incorrect= 11  acc= 0.421
-  Predicted counts: Erratic=0, Fast=7, Fluctuating=0, Medium Fast=61, Medium Slow=22, Slow=10
+    Medium Fast     support= 39  correct= 35  incorrect=  4  acc= 0.897
+    Medium Slow     support= 24  correct= 18  incorrect=  6  acc= 0.750
+    Slow            support= 19  correct=  9  incorrect= 10  acc= 0.474
+  Predicted counts: Erratic=0, Fast=4, Fluctuating=0, Medium Fast=61, Medium Slow=23, Slow=12
 
 === Generation 3 ===
 Test size: 135
-Model:    correct=74, incorrect=61, accuracy=0.548
+Model:    correct=78, incorrect=57, accuracy=0.578
 Baseline: correct=28, incorrect=107, accuracy=0.207
 Per true experience type (model):
     Erratic         support= 16  correct=  0  incorrect= 16  acc= 0.000
-    Fast            support= 15  correct=  4  incorrect= 11  acc= 0.267
+    Fast            support= 15  correct=  1  incorrect= 14  acc= 0.067
     Fluctuating     support= 12  correct=  0  incorrect= 12  acc= 0.000
     Medium Fast     support= 29  correct= 29  incorrect=  0  acc= 1.000
-    Medium Slow     support= 32  correct= 22  incorrect= 10  acc= 0.688
-    Slow            support= 31  correct= 19  incorrect= 12  acc= 0.613
-  Predicted counts: Erratic=0, Fast=4, Fluctuating=0, Medium Fast=77, Medium Slow=28, Slow=26
+    Medium Slow     support= 32  correct= 25  incorrect=  7  acc= 0.781
+    Slow            support= 31  correct= 23  incorrect=  8  acc= 0.742
+  Predicted counts: Erratic=0, Fast=1, Fluctuating=0, Medium Fast=78, Medium Slow=29, Slow=27
 
 === Generation 4 ===
 Test size: 107
-Model:    correct=68, incorrect=39, accuracy=0.636
+Model:    correct=69, incorrect=38, accuracy=0.645
 Baseline: correct=16, incorrect=91, accuracy=0.150
 Per true experience type (model):
     Erratic         support=  6  correct=  0  incorrect=  6  acc= 0.000
-    Fast            support=  8  correct=  0  incorrect=  8  acc= 0.000
+    Fast            support=  8  correct=  1  incorrect=  7  acc= 0.125
     Fluctuating     support=  2  correct=  0  incorrect=  2  acc= 0.000
-    Medium Fast     support= 35  correct= 31  incorrect=  4  acc= 0.886
+    Medium Fast     support= 35  correct= 32  incorrect=  3  acc= 0.914
     Medium Slow     support= 28  correct= 18  incorrect= 10  acc= 0.643
-    Slow            support= 28  correct= 19  incorrect=  9  acc= 0.679
-  Predicted counts: Erratic=0, Fast=3, Fluctuating=0, Medium Fast=57, Medium Slow=20, Slow=27
+    Slow            support= 28  correct= 18  incorrect= 10  acc= 0.643
+  Predicted counts: Erratic=0, Fast=1, Fluctuating=0, Medium Fast=62, Medium Slow=23, Slow=21
 
 === Generation 5 ===
 Test size: 156
-Model:    correct=119, incorrect=37, accuracy=0.763
+Model:    correct=122, incorrect=34, accuracy=0.782
 Baseline: correct=28, incorrect=128, accuracy=0.179
 Per true experience type (model):
     Erratic         support=  0  correct=  0  incorrect=  0  acc= 0.000
-    Fast            support=  6  correct=  2  incorrect=  4  acc= 0.333
+    Fast            support=  6  correct=  0  incorrect=  6  acc= 0.000
     Fluctuating     support=  0  correct=  0  incorrect=  0  acc= 0.000
-    Medium Fast     support= 68  correct= 57  incorrect= 11  acc= 0.838
-    Medium Slow     support= 51  correct= 36  incorrect= 15  acc= 0.706
-    Slow            support= 31  correct= 24  incorrect=  7  acc= 0.774
-  Predicted counts: Erratic=0, Fast=5, Fluctuating=0, Medium Fast=71, Medium Slow=41, Slow=39
+    Medium Fast     support= 68  correct= 62  incorrect=  6  acc= 0.912
+    Medium Slow     support= 51  correct= 39  incorrect= 12  acc= 0.765
+    Slow            support= 31  correct= 21  incorrect= 10  acc= 0.677
+  Predicted counts: Erratic=0, Fast=0, Fluctuating=0, Medium Fast=86, Medium Slow=42, Slow=28
 
 === Generation 6 ===
 Test size: 72
-Model:    correct=53, incorrect=19, accuracy=0.736
+Model:    correct=55, incorrect=17, accuracy=0.764
 Baseline: correct=13, incorrect=59, accuracy=0.181
 Per true experience type (model):
     Erratic         support=  0  correct=  0  incorrect=  0  acc= 0.000
     Fast            support=  1  correct=  0  incorrect=  1  acc= 0.000
     Fluctuating     support=  0  correct=  0  incorrect=  0  acc= 0.000
-    Medium Fast     support= 45  correct= 35  incorrect= 10  acc= 0.778
+    Medium Fast     support= 45  correct= 37  incorrect=  8  acc= 0.822
     Medium Slow     support= 14  correct=  9  incorrect=  5  acc= 0.643
     Slow            support= 12  correct=  9  incorrect=  3  acc= 0.750
-  Predicted counts: Erratic=0, Fast=0, Fluctuating=0, Medium Fast=44, Medium Slow=12, Slow=16
+  Predicted counts: Erratic=0, Fast=0, Fluctuating=0, Medium Fast=46, Medium Slow=12, Slow=14
 
 === Generation 7 ===
 Test size: 80
@@ -90,16 +90,16 @@ Per true experience type (model):
     Medium Fast     support= 39  correct= 33  incorrect=  6  acc= 0.846
     Medium Slow     support= 13  correct= 12  incorrect=  1  acc= 0.923
     Slow            support= 25  correct= 22  incorrect=  3  acc= 0.880
-  Predicted counts: Erratic=0, Fast=0, Fluctuating=0, Medium Fast=39, Medium Slow=19, Slow=22
+  Predicted counts: Erratic=0, Fast=0, Fluctuating=0, Medium Fast=40, Medium Slow=18, Slow=22
 
 === Overall (All Generations) ===
 Total size: 801
-Model: correct=570, incorrect=231, accuracy=0.712
+Model: correct=579, incorrect=222, accuracy=0.723
 Per true experience type (overall):
     Erratic         support=  22  correct=   0  incorrect=  22  acc= 0.000
-    Fast            support=  56  correct=  17  incorrect=  39  acc= 0.304
+    Fast            support=  56  correct=   9  incorrect=  47  acc= 0.161
     Fluctuating     support=  14  correct=   0  incorrect=  14  acc= 0.000
-    Medium Fast     support= 335  correct= 288  incorrect=  47  acc= 0.860
-    Medium Slow     support= 202  correct= 155  incorrect=  47  acc= 0.767
-    Slow            support= 172  correct= 110  incorrect=  62  acc= 0.640
-  Predicted counts (overall): Erratic=0, Fast=29, Fluctuating=0, Medium Fast=431, Medium Slow=190, Slow=151
+    Medium Fast     support= 335  correct= 297  incorrect=  38  acc= 0.887
+    Medium Slow     support= 202  correct= 160  incorrect=  42  acc= 0.792
+    Slow            support= 172  correct= 113  incorrect=  59  acc= 0.657
+  Predicted counts (overall): Erratic=0, Fast=10, Fluctuating=0, Medium Fast=456, Medium Slow=198, Slow=137
