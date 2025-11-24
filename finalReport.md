@@ -1,8 +1,8 @@
 ---
-title: Predicting Pokémon Experience Groups with Machine Learning
-author: Aiden Rodriguez
-github: [Aiden-Rodriguez](https://github.com/Aiden-Rodriguez)
-date: November 2025
+title: "Predicting Pokemon Experience Groups with Machine Learning"
+author: "Aiden Rodriguez"
+github: "https://github.com/Aiden-Rodriguez"
+date: "November 2025"
 ---
 
 # Predicting Pokémon Experience Groups with Machine Learning
